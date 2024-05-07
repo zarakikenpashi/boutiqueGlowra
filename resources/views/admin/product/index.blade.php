@@ -18,23 +18,23 @@
                         <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                             <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400 border-b-2 border-gray-500">
                                 <tr class="text-nowrap">
-                                    <th class="px-3 py-3">ID</th>
+                                    <th class="px-3 py-3 text-center">ID</th>
                                     <th class="px-3 py-3">IMAGE</th>
                                     <th class="px-3 py-3">NOM</th>
-                                    <th class="px-3 py-3">QUANTITE</th>
-                                    <th class="px-3 py-3">PRIX (F CFA)</th>
+                                    <th class="px-3 py-3 text-center">QUANTITE</th>
+                                    <th class="px-3 py-3 text-center">PRIX (F CFA)</th>
                                     <th class="px-3 py-3 text-right">ACTIONS</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 @foreach($products as $product)
                                     <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700">
-                                        <td class="px-3 py-2 text-nowrap">{{$product->id}}</td>
+                                        <td class="px-3 py-2 text-nowrap text-center">{{$product->id}}</td>
                                         <td class="px-3 py-2 text-nowrap"><img src="{{ url('storage/' . $product->image_path) }}" class="w-20 rounded-lg"/></td>
                                         <td class="px-3 py-2 text-nowrap">{{$product->name}}</td>
-                                        <td class="px-3 py-2 text-nowrap">{{$product->quantity}}</td>
-                                        <td class="px-3 py-2 text-nowrap">{{ number_format($product->price, 0, ',', ' ') }}</td>
-                                        <td class="px-3 py-2 text-nowrap">
+                                        <td class="px-3 py-2 text-nowrap text-center">{{$product->quantity}}</td>
+                                        <td class="px-3 py-2 text-nowrap text-center">{{ number_format($product->price, 0, ',', ' ') }}</td>
+                                        <td class="px-3 py-2 text-nowrap text-right">
                                             <a
                                                 href="{{route('product.edit',$product)}}"
                                                 class="font-medium text-blue-600 dark:text-blue-500 hover:underline mx-1"

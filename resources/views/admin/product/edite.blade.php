@@ -3,9 +3,7 @@
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
             {{ __('Produits') }}
         </h2>
-        
     </x-slot>
-
     <div class="py-12">
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
@@ -71,20 +69,22 @@
                         </div>
 
                         <div class="mb-5">
-                            <x-input-label for="category" :value="__('Catégorie')" />
+                            <x-input-label for="category_id" :value="__('Catégorie')" />
                             <x-selectoption-input
-                                name="category"
-                                id="category"
+                                name="category_id"
+                                id="category_id"
                                 class="mt-1 block w-full"
                             >
-                                <option value="">Selectionnez une catégorie</option>
-                                <option value="bijoux">Bijoux</option>
-                                <option value="electronique">Electronique</option>
-                                <option value="vetements">Vetements</option>
-                            </x-selectoption-input>
-
                             
-                            <x-input-error class="mt-2" :messages="$errors->get('category')" />
+                                <option value="">Selectionnez une catégorie</option>
+                                @foreach($categories as $category)
+                                    <option 
+                                        value="{{$category->id}}"
+                                        @if($category->id == $product->category_id) selected @endif
+                                        >{{$category->name}}</option>
+                                @endforeach
+                            </x-selectoption-input>
+                            <x-input-error class="mt-2" :messages="$errors->get('category_id')" />
                         </div>
 
                         <div class="text-right">

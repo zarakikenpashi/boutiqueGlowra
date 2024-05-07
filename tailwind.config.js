@@ -15,6 +15,10 @@ export default {
             fontFamily: {
                 sans: ["Figtree", ...defaultTheme.fontFamily.sans],
             },
+            backgroundImage: {
+                "hero-pattern":
+                    "url('storage/Banner-build-a-brow-desktop.mp4')",
+            },
         },
     },
 

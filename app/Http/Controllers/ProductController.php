@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProductFormRequest;
+use App\Models\Category;
 use App\Models\Products;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -16,7 +17,7 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Products::orderBy('created_at','desc')->paginate(2);
+        $products = Products::orderBy('created_at','desc')->paginate(5);
         //return($products);
         return View('admin.product.index',[
             'products' =>  $products
@@ -28,7 +29,10 @@ class ProductController extends Controller
      */
     public function create()
     {
-        return View("admin.product.create");
+        $categories = Category::select('id','name')->get();
+        return View("admin.product.create",[
+            'categories' =>  $categories
+        ]);
     }
 
     /**
@@ -38,9 +42,11 @@ class ProductController extends Controller
     {
         $data = $request->validated();
         $image = $data['image_path'] ?? null;
+
         if ($image) {
             $data['image_path'] = $image->store('product/' . Str::random(), 'public');
         }
+
         Products::create($data);
 
         return to_route('product.index')
@@ -60,7 +66,10 @@ class ProductController extends Controller
      */
     public function edit(Products $product)
     {
-        return View('admin.product.edite',[
+        $categories = Category::select('id','name')->get();
+
+        return View("admin.product.edite",[
+            'categories' =>  $categories,
             'product' =>  $product
         ]);
     }

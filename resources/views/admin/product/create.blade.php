@@ -47,20 +47,19 @@
                         </div>
 
                         <div class="mb-5">
-                            <x-input-label for="category" :value="__('Catégorie')" />
+                            <x-input-label for="category_id" :value="__('Catégorie')" />
                             <x-selectoption-input
-                                name="category"
-                                id="category"
+                                name="category_id"
+                                id="category_id"
                                 class="mt-1 block w-full"
                             >
-                                <option value="">Selectionnez une catégorie</option>
-                                <option value="bijoux">Bijoux</option>
-                                <option value="electronique">Electronique</option>
-                                <option value="vetements">Vetements</option>
-                            </x-selectoption-input>
-
                             
-                            <x-input-error class="mt-2" :messages="$errors->get('category')" />
+                                <option value="">Selectionnez une catégorie</option>
+                                @foreach($categories as $category)
+                                    <option value="{{$category->id}}">{{$category->name}}</option>
+                                @endforeach
+                            </x-selectoption-input>
+                            <x-input-error class="mt-2" :messages="$errors->get('category_id')" />
                         </div>
 
                         <div class="text-right">

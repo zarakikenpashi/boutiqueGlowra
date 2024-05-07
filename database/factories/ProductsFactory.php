@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Factories\Factory;
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Products>
  */
-class ProductFactory extends Factory
+class ProductsFactory extends Factory
 {
     /**
      * Define the model's default state.
@@ -20,8 +20,7 @@ class ProductFactory extends Factory
             'name' => fake()->name(),
             'description' => fake()->sentence(),
             'quantity' => fake()->numberBetween(0,9),
-            'price' => fake()->numberBetween(2000,150000),
-            'category' => fake()->sentence()
+            'price' => fake()->numberBetween(2000,150000)
         ];
     }
 }

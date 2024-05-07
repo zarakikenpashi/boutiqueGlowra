@@ -27,7 +27,7 @@ class ProductFormRequest extends FormRequest
             "description" => ['nullable', 'string'],
             'quantity' => ['nullable', 'integer'],
             'price' => ['nullable', 'integer'],
-            'category' => ['required']
+            'category_id' => ['nullable', 'integer']
         ];
     }
 }
