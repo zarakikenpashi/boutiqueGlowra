@@ -5,7 +5,15 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\WelcomeController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', [WelcomeController::class,'index']);
+
+Route::controller(WelcomeController::class)->group(function(){
+    Route::get('/','index');
+    Route::get('/maquillages','maquillageListe');
+    Route::get('/soins','soinListe');
+    Route::get('/cheveux','cheveuxListe');
+    Route::get('/accessoires','accessoiresListe');
+    Route::get('/parfuns','parfunListe');
+});
 
 Route::get('/dashboard', function () {
     return view('dashboard');

@@ -18,33 +18,24 @@
         <div class="min-h-screen bg-gray-100 dark:bg-gray-900">
             @include('layouts.navigationfront')
 
-            @foreach($products as $product)
-                @if(!($product["articles"]->isEmpty()))
                 <section class="max-w-7xl mx-auto p-4 sm:p-6 lg:p-8">
-                    <header class="flex justify-between items-center font-bold py-4">
-                        <h2 class="uppercase text-4xl md:text-5xl">{{ $product["titre"] }}</h2>
-                        <a href="{{ url($product['titre']) }}" class="uppercase flex items-center gap-2">
-                        <span>voir plus</span>
-                        <span class="bg-black text-white rounded-full h-10 w-10 flex items-center justify-center"><i class="fa-solid fa-arrow-right"></i></span>
-                        </a>
+                    <header class="font-bold py-4">
+                        <h2 class="uppercase text-4xl md:text-5xl">{{ $products["titre"] }}</h2>
                     </header>
                     <div class="products md:grid md:gap-4 md:grid-cols-2 lg:grid-cols-4">
-                        @foreach($product["articles"] as $article)
+                        @foreach($products["data"] as $product)
                             <div class="product__card bg-white p-5 hover:cursor-pointer hover:shadow-lg">
-                                <img src="{{ url('storage/' . $article->image_path) }}" alt="">
+                                <img src="{{ url('storage/' . $product->image_path) }}" alt="">
                                 <div>
-                                    <h5 class="font-bold">{{ $article->name }}</h5>
-                                    <p class="py-5">{{ $article->description }}</p>
+                                    <h5 class="font-bold">{{ $product->name }}</h5>
+                                    <p class="py-5">{{ $product->description }}</p>
                                 </div>
-                                <div class="text-right font-bold">{{ number_format($article->price, 0, ',', ' ') }} F CFA</div>
+                                <div class="text-right font-bold">{{ number_format($product->price, 0, ',', ' ') }} F CFA</div>
                             </div>
                         @endforeach
                     </div>
                 
                 </section>
-                @endif
-
-            @endforeach
 
 
 

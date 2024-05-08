@@ -11,7 +11,7 @@
                 <div class="flex w-full justify-between items-center ">
                         <!-- Logo -->
                         <div class="shrink-0 flex items-center">
-                            <a href="{{ route('dashboard') }}" class="flex flex-col sm:flex-row items-center text-white">
+                            <a href="{{ url('/') }}" class="flex flex-col sm:flex-row items-center text-white">
                                 <x-application-logo class="block h-9 w-auto fill-current text-white" />
                                 LaraShop
                             </a>
@@ -19,19 +19,26 @@
     
                     <!-- Navigation Links -->
                     <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex text-white">
-                        <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" class="text-white hover:border-white hover:text-white">
-                            {{ __('Dashboard') }}
+                        <x-nav-link 
+                            :href="url('/maquillages')" 
+                            class="text-white hover:border-white hover:text-white">
+                            {{ __('Maquillages') }}
                         </x-nav-link>
-                        <x-nav-link :href="route('product.index')" :active="request()->routeIs('product.index')" class="text-white hover:border-white hover:text-white">
-                            {{ __('Produit') }}
+
+                        <x-nav-link :href="url('/parfuns')" class="text-white hover:border-white hover:text-white">
+                            {{ __('Parfuns') }}
                         </x-nav-link>
     
-                        <x-nav-link :href="route('order')" :active="request()->routeIs('order')" class="text-white hover:border-white hover:text-white">
-                            {{ __('Commande') }}
+                        <x-nav-link :href="url('/soins')" class="text-white hover:border-white hover:text-white">
+                            {{ __('Soins') }}
                         </x-nav-link>
     
-                        <x-nav-link :href="route('customer')" :active="request()->routeIs('customer')" class="text-white hover:border-white hover:text-white">
-                            {{ __('Client') }}
+                        <x-nav-link :href="url('/cheveux')" class="text-white hover:border-white hover:text-white">
+                            {{ __('Cheveux') }}
+                        </x-nav-link>
+
+                        <x-nav-link :href="url('/accessoires')" class="text-white hover:border-white hover:text-white">
+                            {{ __('Accessoires') }}
                         </x-nav-link>
                     </div>
     
@@ -66,20 +73,23 @@
         <!-- Responsive Navigation Menu -->
         <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
             <div class="pt-2 pb-3 space-y-1">
-                <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                    {{ __('Dashboard') }}
+                <x-responsive-nav-link :href="url('/maquillages')" class="text-white hover:border-white hover:text-white">
+                    {{ __('Maquillages') }}
                 </x-responsive-nav-link>
-    
-                <x-responsive-nav-link :href="route('product.index')" :active="request()->routeIs('product.index')">
-                    {{ __('Produit') }}
+                <x-responsive-nav-link :href="url('/parfuns')" class="text-white hover:border-white hover:text-white">
+                    {{ __('Parfuns') }}
                 </x-responsive-nav-link>
-    
-                <x-responsive-nav-link :href="route('order')" :active="request()->routeIs('order')">
-                    {{ __('Commande') }}
+
+                <x-responsive-nav-link :href="url('/soins')" class="text-white hover:border-white hover:text-white">
+                    {{ __('Soins') }}
                 </x-responsive-nav-link>
-    
-                <x-responsive-nav-link :href="route('customer')" :active="request()->routeIs('customer')">
-                    {{ __('Client') }}
+
+                <x-responsive-nav-link :href="url('/cheveux')" class="text-white hover:border-white hover:text-white">
+                    {{ __('Cheveux') }}
+                </x-responsive-nav-link>
+
+                <x-responsive-nav-link :href="url('/accessoires')" class="text-white hover:border-white hover:text-white">
+                    {{ __('Accessoires') }}
                 </x-responsive-nav-link>
             </div>
     
